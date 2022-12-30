@@ -1,0 +1,17 @@
+{% extends 'GymApp/Layout.html' %}
+
+{% block content %}
+    <h1>Client list</h1>
+    <table class="table table-hover">
+        {% for Client in Clients %}
+        <tr>
+            <td>
+                <a href="{% url 'Client_Details' Client.id %}">
+                    {{Client.Name}} {{Client.Surname}}<br>
+                </a>
+            </td>
+        </tr>
+        {% endfor %} 
+      </table>   
+ 
+{% endblock %}

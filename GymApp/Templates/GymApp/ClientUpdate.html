@@ -1,0 +1,44 @@
+{% extends 'GymApp/Layout.html' %}
+{% block content %}
+    <h1>Updating status</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" name="Name" placeholder="Client's Name"><br>
+            <input type="text" class="form-control"  name="Surname"placeholder="Client's Surname"><br>
+            <select name="Gender" class="form-control">
+                <option selected disabled>Open this select menu</option>
+                <option value="Male">Male</option><br>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+        <div class="mb-3"> 
+            <input type="text" class="form-control"  name="Weight" id="Weight" placeholder="Client's Weight"><br><br>
+            <input type="text" class="form-control"  name="Height" id="Height" placeholder="Client's Height"><br><br>
+            <button type="button" onclick="calculation()">Calculation update</button>
+            <br>
+        </div>
+        <br>
+        <div class="mb-3">
+            
+            <input type="text" class="form-control"  name="Outcome" id="Outcome" placeholder="BMI Outcome"><br>
+            <select name="Activity_log" class="form-control"><br>
+                <option selected disabled>Open this select menu</option>
+                <option value="Not Active">Not Active</option><br>
+                <option value="Active">Active</option>
+            </select>
+            <br>
+            <button type="submit">Finalising update!</button>
+    </div>
+    </form>
+    <script>
+        function calculation(){
+            W = document.getElementById('Weight').value;
+            H = document.getElementById('Height').value;
+
+            O = W * H;
+
+            document.getElementById('Outcome').value = O;
+        }
+    </script>
+{% endblock %}
