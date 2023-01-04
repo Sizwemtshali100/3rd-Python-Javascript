@@ -1,0 +1,21 @@
+{% extends 'GymApp/Layout.html' %}
+{% block content %}
+    <h1>What are you searching for ?</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        {% if Searching %}
+        
+        {% for query in Results_query %}
+
+        <a href="{% url 'Client_Details' query.id %}">
+            {{query}}<br>
+        </a>
+                
+        {% endfor %}
+       
+        {% endif %}
+
+</form>            
+
+{% endblock %}

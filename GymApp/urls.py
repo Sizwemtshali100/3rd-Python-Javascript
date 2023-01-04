@@ -8,5 +8,6 @@ urlpatterns = [
     path('ClientUpdate/<int:Client_id>', views.Client_Update, name='Client_Update'),
     path('ClientDelete/<int:Client_id>', views.Client_Delete, name='Client_Delete'),
     path('DownloadingCSV/', views.DownloadingCSV, name='DownloadingCSV'),
+    path('Search/', views.Search, name='Search'),
 
 ]

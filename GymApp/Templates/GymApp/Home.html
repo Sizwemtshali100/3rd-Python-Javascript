@@ -33,12 +33,19 @@
     </form>
     <script>
         function calculation(){
-            W = document.getElementById('Weight').value;
-            H = document.getElementById('Height').value;
 
-            O = W * H;
+            var w;
+            var h;
+            var o;
 
-            document.getElementById('Outcome').value = O;
+            w = document.getElementById('Weight').value;
+            h = document.getElementById('Height').value;
+
+            h = h / 100;
+
+            o = w / (h * h);
+
+            document.getElementById('Outcome').value = o.toFixed(2);
         }
     </script>
 {% endblock %}

@@ -3,9 +3,15 @@
 {% block content %}
     <h1>Client Details</h1>
     <center>
-    <a href="{% url 'Client_Update' ClientDetails.id %}" class="btn btn-primary">Updating</a><br>
-    <a href="{% url 'Client_Delete' ClientDetails.id %}" onclick="Deleting()" class="btn btn-danger">Delete</a><br>
-
+      <table>
+        <td>
+          <a href="{% url 'Client_Update' ClientDetails.id %}" class="btn btn-primary">Updating</a><br>
+        </td>
+        <td>
+          <a href="{% url 'Client_Delete' ClientDetails.id %}" onclick="Deleting()" class="btn btn-danger">Delete</a><br>
+        </td>
+      </table>
+<br>
     <div class="card" style="width: 18rem;">
         <div class="card-header">
           Clients Details

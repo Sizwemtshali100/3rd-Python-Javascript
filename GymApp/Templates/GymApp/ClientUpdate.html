@@ -4,17 +4,19 @@
     <form action="" method="POST">
         {% csrf_token %}
         <div class="mb-3">
-            <input type="text" class="form-control" name="Name" placeholder="Client's Name"><br>
-            <input type="text" class="form-control"  name="Surname"placeholder="Client's Surname"><br>
+            <input type="text" class="form-control" name="Name" value="{{ ClientUpdate.Name }}"><br><!-- Use the Client id, not the test form -->
+            <input type="text" class="form-control" name="Surname" value="{{ ClientUpdate.Surname }}"><br>
             <select name="Gender" class="form-control">
-                <option selected disabled>Open this select menu</option>
-                <option value="Male">Male</option><br>
-                <option value="Female">Female</option>
+                <option selected disabled>
+                    Open this select menu
+                </option>
+                <option value="Male" value="{{ ClientUpdate.Gender }}">Male</option><br>
+                <option value="Female" value="{{ ClientUpdate.Gender }}">Female</option>
             </select>
         </div>
         <div class="mb-3"> 
-            <input type="text" class="form-control"  name="Weight" id="Weight" placeholder="Client's Weight"><br><br>
-            <input type="text" class="form-control"  name="Height" id="Height" placeholder="Client's Height"><br><br>
+            <input type="text" class="form-control" id="Weight" value="{{ ClientUpdate.Weight }}" ><br><br>
+            <input type="text" class="form-control" id="Height" value="{{ ClientUpdate.Height }}" ><br><br>
             <button type="button" onclick="calculation()">Calculation update</button>
             <br>
         </div>
@@ -33,12 +35,19 @@
     </form>
     <script>
         function calculation(){
+
+            var W;
+            var H;
+            var O;
+
             W = document.getElementById('Weight').value;
             H = document.getElementById('Height').value;
 
-            O = W * H;
+            H = H / 100;
 
-            document.getElementById('Outcome').value = O;
+            O = W / (H * H);
+
+            document.getElementById('Outcome').value = O.toFixed(2);
         }
     </script>
 {% endblock %}

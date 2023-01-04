@@ -9,7 +9,7 @@
             <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'Client_list' %}">Client_list</a>
+            <a class="nav-link" href="{% url 'Client_list' %}">Client list</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -20,7 +20,13 @@
             </ul>
           </li>
         </ul>
-
       </div>
+      <form class="d-flex" role="search" 
+      method="POST" action="{% url 'Search' %}">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search"
+        placeholder="Search" aria-label="Search" name="Searching">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
   </nav>

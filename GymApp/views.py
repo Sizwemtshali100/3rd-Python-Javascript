@@ -5,6 +5,16 @@ from django.http import HttpResponse
 import csv
 
 # Create your views here.
+def Search(request):
+    if request.method == "POST":
+        Searching = request.POST['Searching']
+        Results_query = TestModel.objects.filter(Name__contains=Searching)
+        {'Searching':Searching,
+        'Results_query':Results_query}
+    return render(request, 'GymApp/Searching.html',
+    {'Searching':Searching,
+        'Results_query':Results_query})
+
 def DownloadingCSV(request):
         response = HttpResponse(content_type='text/csv')
         response['content-disposition'] = 'attachment; filename=Client_list.csv'
@@ -36,7 +46,7 @@ def Client_Update(request, Client_id):
     if request.method == 'POST':
        if ClientUpdates.is_valid():
         ClientUpdates.save()
-        return redirect('/Client_Details')
+        return redirect('Client_list')
     return render(request, 'GymApp/ClientUpdate.html',
     {'ClientUpdate':ClientUpdate,
     'ClientUpdates':ClientUpdates})
